@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ body {
+    background: linear-gradient(to right, skyblue,violet);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:5px;
+    align-items: center;
+    margin-top: 100px;
+    height: 70vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+ }
+ .card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 10%;
+    gap: 10px;
+    width: 270px;
+    height: 280px;
+    padding-bottom: 20px;
+ }
+ input{
+    background-color: transparent;
+    color:black;
+    width: 175px;
+    padding: 8px;
+    border-radius: 7px;
+    border: 1px solid #D1D5DB;
+
+ }
+
+
+ label{
+    font-size: 13px;
+    margin-right: 20px;
+    margin: 0px;
+    display: block;
+    align-self: flex-start;
+    margin-left: 37px;
+    
+  
+ }
+
+button {
+    background-color: #6957E8;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 8px;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 10px;
+}
+/* Ang pangunahing box para sa buong result */
+.box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 15px;
+}
+
+.box h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #1f2937;
+}
+
+/* Ang kulay violet na kahon sa loob */
+.inner-result-card {
+    background-color: #f3f0ff; /* Malambot na violet tint */
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.label-text {
+    font-size: 12px;
+    color: #6b46c1; /* Violet text */
+    font-weight: bold;
+}
+
+/* Estilo para sa percentage number */
+#percentage {
+    font-size: 26px;
+    font-weight: bold;
+    color: #553c9a;
+    margin: 5px 0;
+}
+
+/* Estilo para sa PASSED badge */
+.badge {
+    background-color: #e6fffa;
+    color: #234e52;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Estilo para sa motivational text sa baba */
+.footer-text {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+</style>
+<body>
+    
+    <div class="card">
+
+     <h3>Grade Calculator</h3>
+
+     
+     <label for="score">Your Score:</label>
+     <input type="number" id="score" placeholder="e.g 15">
+
+     <label for="possPoints">Total Possible Points:</label>
+     <input type="number" id="possPoints" placeholder="e.g 20">
+
+     <button id="calculate" onclick="calculate()">calculate Grade</button>
+    
+    </div>
+    <br><br>
+   <div class="box">
+    <h3>Your Result</h3>
+    
+    <!-- Inner card para sa percentage at status -->
+    <div class="inner-result-card">
+        <span class="label-text">Your Percentage</span>
+        <p id="percentage"></p>
+        <div id="result" class="badge"></div>
+    </div>
+
+    <p class="footer-text">Keep up the good work!</p>
+</div>
+
+    </div>
+
+    <script>
+        function calculate() {
+            let score = Number(document.getElementById("score").value);
+            let possPoints = Number(document.getElementById("possPoints").value);
+
+           let total = (score / possPoints) * 100;
+           let percent = (`${total.toFixed(2)}%`)
+           
+           let status = "";
+            if(total < 75) {
+                status = "Failed❌";
+                
+            } else {
+                status = "Passed✅";
+                
+            }
+
+            let result = document.getElementById("percentage");
+            result.textContent = percent;
+
+            let overAll = document.getElementById("result");
+            overAll.textContent = status;
+        }
+    </script>
+</body>
+</html>
